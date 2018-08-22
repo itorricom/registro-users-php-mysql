@@ -16,7 +16,7 @@ if (isset($_POST['enviar'])) {
 	} else if (empty($apellido)) {
 		$msgApellidoError = "Su Apellido es Requerido!";
 	} else if (is_numeric($apellido)) {
-		$msgApellidoError = "No se permiten Numeros;";
+		$msgApellidoError = "No se permiten Numeros!;";
 	} else if (empty($correo)) {
 		$msgCorreoError = "Su Correo Electrónico es Requerido!";
 	} else if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
