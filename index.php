@@ -56,17 +56,17 @@ echo "\t<h1>" . $titulo_contenido . "</h1>\n";
 		<fieldset>
 		<legend>Ingrese sus Datos</legend>
 			<label>Nombre:</label> 
-			<input type="text" placeholder="Su Nombre" name="nombre" value="<?php if (isset($nombre)) echo $nombre; ?>" />
 			<?php echo "<span class='mensaje_error'>" . $msgNombreError . "</span>\n"; ?>
+			<input type="text" placeholder="Su Nombre" name="nombre" value="<?php if (isset($nombre)) echo $nombre; ?>" />
 			<label>Apellido:</label> 
-			<input type="text" placeholder="Su Apellido" name="apellido" value="<?php if (isset($apellido)) echo $apellido; ?>" />
 			<?php echo "<span class='mensaje_error'>" . $msgApellidoError . "</span>\n"; ?>
+			<input type="text" placeholder="Su Apellido" name="apellido" value="<?php if (isset($apellido)) echo $apellido; ?>" />
 			<label>Correo Electrónico:</label> 
-			<input type="text" placeholder="usuario@dominio.com" name="correo" value="<?php if (isset($correo)) echo $correo; ?>" />
 			<?php echo "<span class='mensaje_error'>" . $msgCorreoError . "</span>\n"; ?>
+			<input type="text" placeholder="usuario@dominio.com" name="correo" value="<?php if (isset($correo)) echo $correo; ?>" />
 			<label>Teléfono:</label> 
-			<input type="text" placeholder="+XXX XXXX-XXXX" name="telefono" value="<?php if (isset($telefono)) echo $telefono; ?>" />
 			<?php echo "<span class='mensaje_error'>" . $msgTelefonoError . "</span>\n"; ?>
+			<input type="text" placeholder="+XXX XXXX-XXXX" name="telefono" value="<?php if (isset($telefono)) echo $telefono; ?>" />
 			<input type="submit" name="enviar" value="registrar" />
 		</fieldset>
 	</form>
