@@ -3,10 +3,10 @@ error_reporting(0);
 require_once("archivos_php/conexion.php");
 
 if (isset($_POST['enviar'])) {
-	$nombre = $_POST['nombre'];
-	$apellido = $_POST['apellido'];
-	$correo = $_POST['correo'];
-	$telefono = $_POST['telefono'];
+	$nombre = trim($_POST['nombre']);
+	$apellido = trim($_POST['apellido']);
+	$correo = trim($_POST['correo']);
+	$telefono = trim($_POST['telefono']);
 	$expTelefono = "/^\+\d{3}\s\d{4}-\d{4}$/";
 	
 	if (empty($nombre)) {
