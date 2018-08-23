@@ -9,6 +9,17 @@ if (isset($_POST['enviar'])) {
 	$telefono = trim($_POST['telefono']);
 	$expTelefono = "/^\+\d{3}\s\d{4}-\d{4}$/";
 	
+	//Verificar los Correos Electrónicos ya existentes
+	$buscarCorreos = "SELECT * FROM datos_usuarios WHERE Correo='{$correo}'";
+	$consultaCorreos = mysqli_query($conexion, $buscarCorreos);
+	$verificarCorreos = mysqli_num_rows($consultaCorreos);
+	
+	//Verificar los Números Telefónicos ya existentes
+	$buscarTelefonos = "SELECT * FROM datos_usuarios WHERE Telefono='{$telefono}'";
+	$consultaTelefonos = mysqli_query($conexion, $buscarTelefonos);
+	$verificarTelefonos = mysqli_num_rows($consultaTelefonos);
+	
+	//Validaciones necesarias para los campos Nombre, Apellido, Correo y Teléfono.
 	if (empty($nombre)) {
 		$msgNombreError = "Su Nombre es Requerido!";
 	} else if (is_numeric($nombre)) {
@@ -16,16 +27,21 @@ if (isset($_POST['enviar'])) {
 	} else if (empty($apellido)) {
 		$msgApellidoError = "Su Apellido es Requerido!";
 	} else if (is_numeric($apellido)) {
-		$msgApellidoError = "No se permiten Numeros!;";
+		$msgApellidoError = "No se permiten Numeros;";
 	} else if (empty($correo)) {
 		$msgCorreoError = "Su Correo Electrónico es Requerido!";
 	} else if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 		$msgCorreoError = "Su Correo Electrónico es Invalido!";
+	} else if ($verificarCorreos > 0) {
+		$msgCorreoError = "El Correo Electrónico ya Existe!";
 	} else if (empty($telefono)) {
-		$msgTelefonoError = "Su Numero Telefónico es Requerido!";
+		$msgTelefonoError = "Su Número Telefónico es Requerido!";
 	} else if (!preg_match($expTelefono, $telefono)) {
-		$msgTelefonoError = "Su Numero Telefónico es Invalido!";
+		$msgTelefonoError = "Su Número Telefónico es Invalido!";
+	} else if ($verificarTelefonos > 0) {
+		$msgTelefonoError = "El Número Telefónico ya Existe!";
 	} else {
+		//Registrar los datos de cada campo si TODOS fueron validados exitosamente
 		$registro = "INSERT INTO datos_usuarios(Nombre, Apellido, Correo, Telefono) 
 		VALUES('{$nombre}', '{$apellido}', '{$correo}', '{$telefono}')";
 		$resultado = mysqli_query($conexion, $registro);
