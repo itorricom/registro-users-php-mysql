@@ -1,6 +1,8 @@
 <?php
-error_reporting(0);
 require_once("archivos_php/conexion.php");
+
+//Definir los variables de los mensajes de errores
+$msgNombreError = $msgApellidoError = $msgCorreoError = $msgTelefonoError = "";
 
 if (isset($_POST['enviar'])) {
 	$nombre = trim($_POST['nombre']);
