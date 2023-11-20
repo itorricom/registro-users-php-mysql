@@ -1,7 +1,7 @@
 <?php
 require_once("conexion.php");
 
-$solicitud = "SELECT * FROM datos_usuarios ORDER BY Nombre ASC";
+$solicitud = "SELECT * FROM usuario ORDER BY Nombre ASC";
 $resultado = mysqli_query($conexion, $solicitud);
 
 $sub_titulo = "Usuarios Registrados";

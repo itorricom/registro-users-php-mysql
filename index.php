@@ -12,12 +12,12 @@ if (isset($_POST['enviar'])) {
 	$expTelefono = "/^\+\d{3}\s\d{4}-\d{4}$/";
 	
 	//Verificar los Correos Electrónicos ya existentes
-	$buscarCorreos = "SELECT * FROM datos_usuarios WHERE Correo='{$correo}'";
+	$buscarCorreos = "SELECT * FROM usuario WHERE Correo='{$correo}'";
 	$consultaCorreos = mysqli_query($conexion, $buscarCorreos);
 	$verificarCorreos = mysqli_num_rows($consultaCorreos);
 	
 	//Verificar los Números Telefónicos ya existentes
-	$buscarTelefonos = "SELECT * FROM datos_usuarios WHERE Telefono='{$telefono}'";
+	$buscarTelefonos = "SELECT * FROM usuario WHERE Telefono='{$telefono}'";
 	$consultaTelefonos = mysqli_query($conexion, $buscarTelefonos);
 	$verificarTelefonos = mysqli_num_rows($consultaTelefonos);
 	
